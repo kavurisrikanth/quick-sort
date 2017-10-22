@@ -17,14 +17,17 @@ public class QuickSortClient {
         int len = 0;
         Integer nums[];
         Scanner sc = new Scanner(System.in);
-        Random rnd = new Random();
+        Random rnd = new Random(0);
 
         while(sc.hasNextInt()) {
             len = sc.nextInt();
             nums = new Integer[len];
-            for(int i = 0; i < len; i++)
-                nums[i] = rnd.nextInt(50);
+            for(int i = 0; i < len; i++) {
+                rnd.setSeed(0);
+                nums[i] = len - 1 - i;
+            }
 
+            /*
             Generic.printArray(nums);
             Quick.sort(nums);
             Generic.printArray(nums);
@@ -38,6 +41,7 @@ public class QuickSortClient {
 
             Collections.shuffle(Arrays.asList(nums));
             System.out.println("\n");
+            */
 
             Generic.printArray(nums);
             QuickMedianThree.sort(nums);
